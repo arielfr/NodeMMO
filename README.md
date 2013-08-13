@@ -65,6 +65,6 @@ In each folder you will find the propper files. The NodeJS server would be on th
 The Game Engine you will find it on the folder js by the name gEngine.js
 
 <h1>More Info</h1>
-If you want more information about the gEngine, please read the hole code. It have enough comments and its well written, so you can understand it. It would be very hard to write a hole documentation about it.
+If you want more information about the gEngine, please read the hole code. It have enough comments and its well written, so, you can understand it. It would be very hard to write a hole documentation about it.
 
 Enjoy
