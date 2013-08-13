@@ -1,0 +1,85 @@
+/* ------------- In-Game ------------ */
+#map-container{
+	border: 1px solid black;
+	position: relative;
+	width: 640px;
+	height: 480px;
+	cursor: crosshair;
+	overflow: hidden;
+	margin: 0 auto;
+}
+#map{
+	position: absolute;
+	width: 1480px;
+	height: 1480px;
+	top: 0px;
+	left: 0px;
+}
+#map .mapBlock{
+	float: left;
+	width: 40px;
+	height: 40px;
+}
+.character{
+	display: none;
+	position: absolute;
+}
+.character .head{
+	background-image: url('../img/head.png');
+	width: 16px;
+	height: 16px;
+	position: relative;
+	left: 4px;
+	top: 8px;
+}
+.character .body{
+	background-image: url('../img/body.png');
+	background-position: 0px 0px;
+	width: 25px;
+	height: 45px;
+}
+
+/* ------------- Game Engine ------------ */
+#debugger{
+	position: fixed;
+	background: #9aca27;
+	bottom: 0px;
+	right: 20px;
+	z-index: 99999;
+	color: white;
+	font-size: 14px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	font-weight: bold;
+	text-align: center;
+	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	border-left: 1px solid #9aca27;
+	border-right: 1px solid #9aca27;
+	width: 300px;
+}
+#debugger .title{
+	cursor: pointer;
+	padding: 10px;
+}
+#debugger .title:hover{
+	text-decoration: underline;
+}
+#debugger .debugMessage{
+	display: none;
+	width: 290px;
+	height: 250px;
+	background-color: #EEFFCF;
+	color: black;
+	font-weight: normal;
+	overflow: auto; 
+	padding: 5px;
+}
+#debugger .debugMessage span{
+	display: block;
+	text-align: left;
+}
+#uiStats{
+	position: fixed;
+	right: 20px;
+	top: 10px;
+}
