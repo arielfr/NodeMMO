@@ -160,7 +160,7 @@ $(function (e, t){
 	}
 
 	maps.prototype.moveUp = function(){
-		if( !(this.restrictUp()) ){
+		if( !(this.restrictUp()) && !(_this.player.restrictUp()) ){
 			this.y = this.y + _this.movement;
 			
 			this.mapElement.css('top', this.y);
@@ -168,7 +168,7 @@ $(function (e, t){
 	}
 
 	maps.prototype.moveDown = function(){
-		if( !(this.restrictDown()) ){
+		if( !(this.restrictDown()) && !(_this.player.restrictDown()) ){
 			this.y = this.y - _this.movement;
 
 			this.mapElement.css('top', this.y);
@@ -176,7 +176,7 @@ $(function (e, t){
 	}
 
 	maps.prototype.moveLeft = function(){
-		if( !(this.restrictLeft()) ){
+		if( !(this.restrictLeft()) && !(_this.player.restrictLeft()) ){
 			this.x = this.x + _this.movement;
 
 			this.mapElement.css('left', this.x);
@@ -184,7 +184,7 @@ $(function (e, t){
 	}
 
 	maps.prototype.moveRight = function(){
-		if( !(this.restrictRight()) ){
+		if( !(this.restrictRight()) && !(_this.player.restrictRight()) ){
 			this.x = this.x - _this.movement;
 
 			this.mapElement.css('left', this.x);
@@ -263,8 +263,64 @@ $(function (e, t){
 		this.playerElement.css('display', 'block');
 	}
 
+	player.prototype.restrictUp = function(){
+		var nextMovement = this.y - _this.movement;
+
+		for (key in _this.players){
+			if( key != _this.player.nickname ){
+				if( (nextMovement < (_this.players[key].y + 20)) && ( (this.x > (_this.players[key].x - 20)) && (this.x < (_this.players[key].x + 20)) ) && (this.y > (_this.players[key].y)) ){
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+
+	player.prototype.restrictDown = function(){
+		var nextMovement = this.y + _this.movement;
+
+		for (key in _this.players){
+			if( key != _this.player.nickname ){
+				if( (nextMovement > (_this.players[key].y - 20)) && ( (this.x > (_this.players[key].x - 20)) && (this.x < (_this.players[key].x + 20)) ) && (this.y < (_this.players[key].y)) ){
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+
+	player.prototype.restrictLeft = function(){
+		var nextMovement = this.x - _this.movement;
+
+		for (key in _this.players){
+			if( key != _this.player.nickname ){
+				if( (nextMovement < (_this.players[key].x + 20)) && ( (this.y > (_this.players[key].y - 20)) && (this.y < (_this.players[key].y + 20)) ) && (this.x > (_this.players[key].x)) ){
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+
+	player.prototype.restrictRight = function(){
+		var nextMovement = this.x + _this.movement;
+		
+		for (key in _this.players){
+			if( key != _this.player.nickname ){
+				if( (nextMovement > (_this.players[key].x - 20)) && ( (this.y > (_this.players[key].y - 20)) && (this.y < (_this.players[key].y + 20)) ) && (this.x < (_this.players[key].x)) ){
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+
 	player.prototype.moveUp = function(){
-		if( !(_this.map.restrictUp()) ){
+		if( !(_this.map.restrictUp()) && !(this.restrictUp()) ){
 			this.y = this.y - _this.movement;
 			this.playerElement.css('top', this.y);
 			this.emitMovement(this.nickname, this.y, this.x);
@@ -282,7 +338,7 @@ $(function (e, t){
 	}
 
 	player.prototype.moveDown = function(){
-		if( !(_this.map.restrictDown()) ){
+		if( !(_this.map.restrictDown()) && !(this.restrictDown()) ){
 			this.y = this.y + _this.movement;
 			this.playerElement.css('top', this.y);
 			this.emitMovement(this.nickname, this.y, this.x);
@@ -300,7 +356,7 @@ $(function (e, t){
 	}
 
 	player.prototype.moveLeft = function(){
-		if( !(_this.map.restrictLeft()) ){
+		if( !(_this.map.restrictLeft()) && !(this.restrictLeft()) ){
 			this.x = this.x - _this.movement;
 			this.playerElement.css('left', this.x);
 			this.emitMovement(this.nickname, this.y, this.x);
@@ -318,7 +374,7 @@ $(function (e, t){
 	}
 
 	player.prototype.moveRight = function(){
-		if( !(_this.map.restrictRight()) ){
+		if( !(_this.map.restrictRight()) && !(this.restrictRight()) ){
 			this.x = this.x + _this.movement;
 			this.playerElement.css('left', this.x);
 			this.emitMovement(this.nickname, this.y, this.x);
