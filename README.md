@@ -75,3 +75,7 @@ The Game Engine you will find it on the folder js by the name gEngine.js
 If you want more information about the gEngine, please read the hole code. It have enough comments and its well written, so, you can understand it. It would be very hard to write a hole documentation about it.
 
 Enjoy
+
+<h1>License</h1>
+
+Copyright 2013 Ariel Rey. Released under the terms of the MIT license.
