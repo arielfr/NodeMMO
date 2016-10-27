@@ -589,7 +589,7 @@ $(function (e, t){
 
 	/* ------------------ Initialization ----------------- */
 	//Initialize Socket
-	var socket = io.connect('http://127.0.0.1:9000');
+	var socket = io.connect();
 	var characterName = prompt('Please enter the name of the character: ');
 	var gEngine = new gEngine(socket, characterName);
 });

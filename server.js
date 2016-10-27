@@ -1,22 +1,19 @@
-var http = require('http').createServer(handler);
-var io = require('socket.io').listen(http, { log: false });
+var express = require('express');
+var app = express();
+var server = require('http').createServer(app);
+var io = require('socket.io').listen(server, { log: false });
 var fs = require('fs');
 
-http.listen('9000');
+server.listen('9000');
 
-//Server handler
-function handler(req, res){
-	fs.readFile('../index.html',
-		function (err, data) {
-		    if (err) {
-				res.writeHead(500);
-				return res.end('Error loading index.html');
-		    }
+app.use("/css", express.static(__dirname + '/css'));
+app.use("/js", express.static(__dirname + '/js'));
+app.use("/img", express.static(__dirname + '/img'));
 
-		    res.writeHead(200);
-		    res.end(data);
-	  	});
-}
+//Main page of the server
+app.get('/', function (req, res) {
+        res.sendfile(__dirname + '/index.html');
+});
 
 //Player List
 var players = {};
