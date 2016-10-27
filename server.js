@@ -32,8 +32,12 @@ io.sockets.on('connection', function(socket){
 
 	//Detect player movement and update the player
 	socket.on('player_move', function (data){
-		players[data.nickname].y = data.y;
-		players[data.nickname].x = data.x;
+		if( players[data.nickname] ){
+			players[data.nickname].y = data.y;
+			players[data.nickname].x = data.x;
+		}else{
+			players[data.nickname] = new Player(data.nickname, data.y, data.x, socket.id);
+		}
 	});
 
 	//Detect the Disconnection
