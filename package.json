@@ -1,0 +1,24 @@
+{
+  "name": "nodemmo",
+  "version": "1.0.0",
+  "description": "NodeMMO",
+  "main": "server/server.js",
+  "dependencies": {
+    "express": "^4.14.0",
+    "socket.io": "0.9.16"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arielfr/NodeMMO.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arielfr/NodeMMO/issues"
+  },
+  "homepage": "https://github.com/arielfr/NodeMMO#readme"
+}
